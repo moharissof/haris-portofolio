@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 export function MotionEffects() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -73,21 +75,59 @@ export function MotionEffects() {
       { threshold: 0.14, rootMargin: "0px 0px -8%" },
     );
 
-    document.querySelectorAll("[data-reveal]").forEach((element) => observer.observe(element));
+    const observeReveal = (element: Element) => {
+      if (element.classList.contains("is-visible")) return;
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight * 0.96) {
+        requestAnimationFrame(() => element.classList.add("is-visible"));
+        return;
+      }
+      observer.observe(element);
+    };
+
+    const scanForReveals = (scope: ParentNode = document) => {
+      if (scope instanceof Element && scope.matches("[data-reveal]")) observeReveal(scope);
+      scope.querySelectorAll?.("[data-reveal]").forEach(observeReveal);
+    };
+
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => mutation.addedNodes.forEach((node) => {
+        if (node instanceof Element) scanForReveals(node);
+      }));
+    });
+
+    const syncHashPosition = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      target?.scrollIntoView({ block: "start" });
+    };
+
+    scanForReveals();
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    requestAnimationFrame(() => {
+      scanForReveals();
+      syncHashPosition();
+    });
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     window.addEventListener("pointerover", onPointerOver, { passive: true });
     window.addEventListener("pointerleave", resetTilt);
+    window.addEventListener("hashchange", syncHashPosition);
+    window.addEventListener("pageshow", syncHashPosition);
     frame = requestAnimationFrame(animate);
 
     return () => {
       cancelAnimationFrame(frame);
       observer.disconnect();
+      mutationObserver.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerover", onPointerOver);
       window.removeEventListener("pointerleave", resetTilt);
+      window.removeEventListener("hashchange", syncHashPosition);
+      window.removeEventListener("pageshow", syncHashPosition);
       root.classList.remove("motion-ready");
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <>
