@@ -1,38 +1,11 @@
+import Link from "next/link";
+import type { CSSProperties } from "react";
+import { projects } from "./projects/data";
+
 const highlights = [
   { value: "4+", label: "Years building software" },
   { value: "10+", label: "Engineering roles" },
   { value: "2×", label: "National 1st-place awards" },
-];
-
-const projects = [
-  {
-    number: "01",
-    title: "Real-time work platform",
-    description:
-      "A production project management platform with tasks, chat, notifications, roles, priorities, deadlines, and synchronized team activity.",
-    tags: ["Real-time", "System architecture", "Production"],
-  },
-  {
-    number: "02",
-    title: "Academic digital systems",
-    description:
-      "Contributed to E-Kinerja, EduMonitor, SIAKAD, and a public-facing company profile for STIKOM PGRI Banyuwangi.",
-    tags: ["Full-stack", "Databases", "Education"],
-  },
-  {
-    number: "03",
-    title: "Tax collection integration",
-    description:
-      "Implemented Sijaka Wangi integrations with hotel, restaurant, and cafe point-of-sale systems, including testing and user support.",
-    tags: ["Integration", "Data accuracy", "Support"],
-  },
-  {
-    number: "04",
-    title: "Machine-learning solutions",
-    description:
-      "Prepared and validated datasets, trained and fine-tuned models, evaluated performance, and integrated models into selected applications.",
-    tags: ["Data engineering", "ML", "Deployment"],
-  },
 ];
 
 const experience = [
@@ -77,9 +50,12 @@ const skills = [
   "Production maintenance",
 ];
 
+const marqueeSkills = ["Full-stack", "Backend engineering", "System architecture", "Real-time apps", "Cloud computing", "Data engineering", "Machine learning", "Technical leadership"];
+const marqueeTools = ["Google Cloud", "RESTful APIs", "MySQL", "PostgreSQL", "MongoDB", "Authentication", "Data preprocessing", "Production deployment"];
+
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <nav className="nav" aria-label="Main navigation">
         <a className="brand" href="#top" aria-label="Haris Sofyan home">
           HS<span>.</span>
@@ -95,7 +71,7 @@ export default function Home() {
       </nav>
 
       <section className="hero" id="top">
-        <div className="hero-copy">
+        <div className="hero-copy" data-reveal>
           <div className="eyebrow"><i /> Available for the right opportunity</div>
           <h1>
             I build software
@@ -111,8 +87,10 @@ export default function Home() {
         </div>
 
         <div className="hero-visual" aria-hidden="true">
+          <div className="world-grid" />
           <div className="orbital orbital-one" />
           <div className="orbital orbital-two" />
+          <div className="orbital orbital-three" />
           <div className="core">
             <div className="core-face front"><span>BUILD</span><small>01</small></div>
             <div className="core-face back"><span>SHIP</span><small>02</small></div>
@@ -121,12 +99,15 @@ export default function Home() {
             <div className="core-face top" />
             <div className="core-face bottom" />
           </div>
+          <div className="holo-panel holo-one"><span>01</span><b>ARCHITECTURE</b><i /></div>
+          <div className="holo-panel holo-two"><span>02</span><b>REAL-TIME</b><i /></div>
+          <div className="holo-panel holo-three"><span>03</span><b>DEPLOYMENT</b><i /></div>
           <span className="visual-label label-a">SYSTEMS</span>
           <span className="visual-label label-b">CLOUD</span>
           <span className="visual-label label-c">DATA</span>
         </div>
 
-        <div className="hero-stats">
+        <div className="hero-stats" data-reveal>
           {highlights.map((item) => (
             <div className="stat" key={item.label}>
               <strong>{item.value}</strong>
@@ -137,29 +118,43 @@ export default function Home() {
       </section>
 
       <section className="section work" id="work">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <div><span className="section-index">01 / SELECTED WORK</span><h2>Built for real-world impact.</h2></div>
           <p>From collaborative platforms to public-sector integrations, I focus on dependable systems that make complicated work feel simple.</p>
         </div>
         <div className="project-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.number}>
+          {projects.map((project, index) => (
+            <Link className="project-card" href={`/projects/${project.slug}`} key={project.number} data-tilt data-reveal style={{ "--delay": `${index * 90}ms` } as CSSProperties}>
               <div className="project-top"><span>{project.number}</span><span className="arrow">↗</span></div>
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="section experience" id="experience">
+      <section className="marquee-section" aria-label="Tools and skills" data-reveal>
+        <div className="marquee-label"><span>TOOLS + SKILLS</span><i>04:12</i></div>
+        <div className="marquee marquee-forward">
+          <div className="marquee-track">
+            {[...marqueeSkills, ...marqueeSkills].map((item, index) => <span key={`${item}-${index}`}>{item}<i>✦</i></span>)}
+          </div>
+        </div>
+        <div className="marquee marquee-reverse">
+          <div className="marquee-track">
+            {[...marqueeTools, ...marqueeTools].map((item, index) => <span key={`${item}-${index}`}>{item}<i>↗</i></span>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="section experience" id="experience" data-reveal>
         <div className="section-heading compact">
           <div><span className="section-index">02 / EXPERIENCE</span><h2>Experience with ownership.</h2></div>
         </div>
         <div className="timeline">
           {experience.map((item) => (
-            <article className="timeline-row" key={item.role + item.company}>
+            <article className="timeline-row" key={item.role + item.company} data-reveal>
               <time>{item.date}</time>
               <div><h3>{item.role}</h3><span className="company">{item.company}</span></div>
               <p>{item.text}</p>
@@ -172,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section about" id="about">
+      <section className="section about" id="about" data-reveal>
         <div className="about-copy">
           <span className="section-index">03 / ABOUT & EXPERTISE</span>
           <h2>Engineering depth.<br /><em>Human clarity.</em></h2>
@@ -194,7 +189,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contact">
+      <section className="contact" data-reveal>
         <span className="section-index">04 / CONTACT</span>
         <h2>Have a meaningful challenge?</h2>
         <a className="contact-link" href="mailto:haristiani243@gmail.com">Let&apos;s build it <span>↗</span></a>
