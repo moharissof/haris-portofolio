@@ -28,6 +28,8 @@ h1 span { display: block; color: transparent; -webkit-text-stroke: 1px #757570; 
 .button.primary { background: var(--acid); color: #0a0a09; border-color: var(--acid); font-weight: 650; }
 .button.primary span { margin-left: 20px; }
 .button.secondary:hover { border-color: #888; }
+.button.tertiary { border-color: transparent; color: #85857f; padding-left: 10px; padding-right: 10px; }
+.button.tertiary:hover { color: white; }
 
 .hero-visual { width: 360px; height: 360px; position: absolute; right: 7%; top: 242px; perspective: 850px; transform-style: preserve-3d; }
 .core { width: 136px; height: 136px; position: absolute; left: 112px; top: 112px; transform-style: preserve-3d; animation: rotate-cube 14s linear infinite; }
@@ -140,6 +142,20 @@ footer { max-width: 1440px; padding: 28px 32px; margin: auto; display: flex; jus
 .project-card[data-tilt]:hover::before, .project-card[data-tilt]:hover::after { opacity: 1; }.project-card[data-tilt]:hover::after { transform: translateZ(65px) scale(1); }
 .project-card > * { position: relative; z-index: 1; transform: translateZ(28px); }
 
+/* Portfolio document */
+.portfolio-deck { max-width: 1440px; margin: auto; padding: 140px 32px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 9%; align-items: center; position: relative; }
+.portfolio-deck::before { content: ""; position: absolute; width: 620px; height: 620px; left: -150px; top: 40px; border-radius: 50%; background: radial-gradient(circle, rgba(47,98,255,.13), transparent 67%); pointer-events: none; }
+.portfolio-preview { --tilt-x: 0deg; --tilt-y: 0deg; --glow-x: 50%; --glow-y: 50%; display: block; position: relative; padding: 13px; border: 1px solid rgba(255,255,255,.18); background: #10172a; transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(-2deg); transform-style: preserve-3d; transition: transform .18s ease-out, box-shadow .3s ease; box-shadow: 0 45px 90px rgba(0,0,0,.45); will-change: transform; }
+.portfolio-preview:hover { transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotateZ(0) translateZ(18px); box-shadow: 0 55px 110px rgba(0,0,0,.6); }
+.portfolio-preview img { display: block; width: 100%; height: auto; position: relative; z-index: 1; transform: translateZ(32px); }
+.portfolio-preview-glow { position: absolute; inset: 0; z-index: 2; background: radial-gradient(circle at var(--glow-x) var(--glow-y), rgba(201,255,61,.2), transparent 38%); opacity: 0; transition: opacity .3s; pointer-events: none; transform: translateZ(48px); }
+.portfolio-preview:hover .portfolio-preview-glow { opacity: 1; }
+.deck-page-count, .deck-open { position: absolute; z-index: 3; bottom: 30px; padding: 8px 11px; background: rgba(5,5,5,.82); backdrop-filter: blur(7px); font: 8px var(--font-geist-mono); letter-spacing: .12em; transform: translateZ(58px); }
+.deck-page-count { left: 30px; color: #a7a79f; }.deck-open { right: 30px; color: var(--acid); }
+.portfolio-deck-copy { position: relative; z-index: 2; }.portfolio-deck-copy h2 { margin: 20px 0 30px; font-size: clamp(46px, 5.8vw, 83px); line-height: .92; letter-spacing: -.06em; font-weight: 610; }.portfolio-deck-copy > p { color: #92928c; line-height: 1.75; max-width: 560px; }
+.deck-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 40px 0; }.deck-meta > div { border-top: 1px solid var(--line); padding-top: 15px; display: flex; flex-direction: column; gap: 8px; }.deck-meta span { color: #62625d; font: 8px var(--font-geist-mono); text-transform: uppercase; letter-spacing: .14em; }.deck-meta strong { font-size: 12px; font-weight: 500; }
+.deck-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
 /* Skills marquee */
 .marquee-section { background: #0a0a09; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 0; overflow: hidden; }
 .marquee-label { width: min(1376px, calc(100% - 64px)); margin: 0 auto 26px; display: flex; justify-content: space-between; color: #64645f; font: 9px var(--font-geist-mono); letter-spacing: .16em; }
@@ -179,10 +195,12 @@ footer { max-width: 1440px; padding: 28px 32px; margin: auto; display: flex; jus
 
 @media (max-width: 1000px) {
   .holo-two { right: 15px; }.marquee-label { width: calc(100% - 36px); }
+  .portfolio-deck { grid-template-columns: 1fr 1fr; gap: 5%; }
   .case-hero { min-height: 780px; }.case-scene { opacity: .55; right: -120px; }.case-story, .case-facts, .next-project { margin-left: 32px; margin-right: 32px; }.case-story { padding: 110px 0; }.case-detail { padding-left: 15%; }
 }
 @media (max-width: 720px) {
   .cursor-dot, .cursor-ring, .cursor-ambient { display: none; }.hero-visual { transform: scale(.7); }.holo-panel { display: none; }
+  .portfolio-deck { padding: 90px 18px; grid-template-columns: 1fr; gap: 65px; }.portfolio-preview { transform: rotateZ(-1deg); }.portfolio-preview:hover { transform: rotateZ(0); }.portfolio-deck-copy h2 { font-size: 48px; }.deck-page-count, .deck-open { bottom: 22px; }.deck-page-count { left: 22px; }.deck-open { right: 22px; }
   .marquee-section { padding: 25px 0; }.marquee-label { width: calc(100% - 36px); }.marquee-track > span { font-size: 35px; gap: 18px; padding-right: 18px; }
   .case-nav .back-link { font-size: 0; }.case-nav .back-link span { font-size: 20px; }.case-hero { padding: 65px 18px 40px; min-height: 710px; }.case-hero h1 { margin-top: 55px; }.case-hero > p { max-width: 92%; }.case-scene { width: 340px; height: 340px; right: -110px; bottom: 20px; opacity: .38; transform: scale(.72); transform-origin: center; }.case-prism { left: 85px; top: 65px; }.case-facts { margin: 0 18px; grid-template-columns: 1fr; }.case-facts > div + div { border-left: 0; border-top: 1px solid var(--line); }.case-story { margin: 0 18px; padding: 90px 0; }.case-story > h2 { margin-bottom: 70px; }.case-detail { grid-template-columns: 1fr; padding-left: 0; gap: 38px; }.case-capabilities { padding: 90px 18px; grid-template-columns: 1fr; gap: 50px; }.next-project { margin: 0 18px; min-height: 270px; grid-template-columns: 1fr auto; }.next-project > span { grid-column: 1 / -1; align-self: end; }.next-project strong { align-self: start; }.next-project i { align-self: start; }
 }

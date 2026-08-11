@@ -62,6 +62,7 @@ export default function Home() {
         </a>
         <div className="nav-links">
           <a href="#work">Work</a>
+          <a href="#portfolio">Portfolio</a>
           <a href="#experience">Experience</a>
           <a href="#about">About</a>
         </div>
@@ -82,7 +83,8 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#work">Explore my work <span>↓</span></a>
-            <a className="button secondary" href="/Haris_Sofyan_CV.pdf" download>Download CV</a>
+            <a className="button secondary" href="/Haris_Sofyan_Portfolio_English.pdf" target="_blank" rel="noreferrer">View portfolio <span>↗</span></a>
+            <a className="button tertiary" href="/Haris_Sofyan_CV.pdf" download>Download CV</a>
           </div>
         </div>
 
@@ -134,6 +136,28 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="portfolio-deck" id="portfolio">
+        <a className="portfolio-preview" href="/Haris_Sofyan_Portfolio_English.pdf" target="_blank" rel="noreferrer" data-tilt data-reveal aria-label="Open Haris Sofyan portfolio PDF">
+          <div className="portfolio-preview-glow" />
+          <img src="/portfolio-cover.png" alt="Cover of Haris Sofyan English portfolio" />
+          <span className="deck-page-count">12 PAGES</span>
+          <span className="deck-open">OPEN PDF ↗</span>
+        </a>
+        <div className="portfolio-deck-copy" data-reveal>
+          <span className="section-index">02 / PORTFOLIO DECK</span>
+          <h2>A closer look at the work.</h2>
+          <p>A curated 12-page portfolio covering AI-enabled education, therapy operations, business platforms, school systems, hospitality, property, retail, and enterprise delivery.</p>
+          <div className="deck-meta">
+            <div><span>Edition</span><strong>English · 2026</strong></div>
+            <div><span>Format</span><strong>PDF · 12 pages</strong></div>
+          </div>
+          <div className="deck-actions">
+            <a className="button primary" href="/Haris_Sofyan_Portfolio_English.pdf" target="_blank" rel="noreferrer">View full portfolio <span>↗</span></a>
+            <a className="button secondary" href="/Haris_Sofyan_Portfolio_English.pdf" download>Download PDF</a>
+          </div>
+        </div>
+      </section>
+
       <section className="marquee-section" aria-label="Tools and skills" data-reveal>
         <div className="marquee-label"><span>TOOLS + SKILLS</span><i>04:12</i></div>
         <div className="marquee marquee-forward">
@@ -150,7 +174,7 @@ export default function Home() {
 
       <section className="section experience" id="experience" data-reveal>
         <div className="section-heading compact">
-          <div><span className="section-index">02 / EXPERIENCE</span><h2>Experience with ownership.</h2></div>
+          <div><span className="section-index">03 / EXPERIENCE</span><h2>Experience with ownership.</h2></div>
         </div>
         <div className="timeline">
           {experience.map((item) => (
@@ -169,7 +193,7 @@ export default function Home() {
 
       <section className="section about" id="about" data-reveal>
         <div className="about-copy">
-          <span className="section-index">03 / ABOUT & EXPERTISE</span>
+          <span className="section-index">04 / ABOUT & EXPERTISE</span>
           <h2>Engineering depth.<br /><em>Human clarity.</em></h2>
           <p>I work across the full product lifecycle—from requirements and architecture to testing, deployment, and continuous improvement. I&apos;m equally comfortable guiding a team, shaping an API, or tracing a production issue.</p>
           <div className="education">
@@ -190,7 +214,7 @@ export default function Home() {
       </section>
 
       <section className="contact" data-reveal>
-        <span className="section-index">04 / CONTACT</span>
+        <span className="section-index">05 / CONTACT</span>
         <h2>Have a meaningful challenge?</h2>
         <a className="contact-link" href="mailto:haristiani243@gmail.com">Let&apos;s build it <span>↗</span></a>
         <div className="contact-meta">
@@ -198,6 +222,7 @@ export default function Home() {
           <div>
             <a href="https://linkedin.com/in/haris-sofyan" target="_blank" rel="noreferrer">LinkedIn</a>
             <a href="tel:+6285784161309">+62 857 8416 1309</a>
+            <a href="/Haris_Sofyan_Portfolio_English.pdf" target="_blank" rel="noreferrer">Portfolio PDF</a>
             <a href="mailto:haristiani243@gmail.com">Email</a>
           </div>
         </div>
