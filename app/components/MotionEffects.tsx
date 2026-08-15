@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export function MotionEffects() {
@@ -63,6 +64,7 @@ export function MotionEffects() {
     const onPointerOver = (event: PointerEvent) => {
       const interactive = (event.target as HTMLElement).closest("a, button, [data-tilt]");
       ringRef.current?.classList.toggle("is-active", Boolean(interactive));
+      dotRef.current?.classList.toggle("is-hidden", Boolean(interactive));
     };
 
     const observer = new IntersectionObserver(
@@ -132,7 +134,9 @@ export function MotionEffects() {
   return (
     <>
       <div className="cursor-dot" ref={dotRef} aria-hidden="true" />
-      <div className="cursor-ring" ref={ringRef} aria-hidden="true"><span>VIEW</span></div>
+      <div className="cursor-ring" ref={ringRef} aria-hidden="true">
+        <Image src="/logo.png" alt="" width={56} height={56} />
+      </div>
       <div className="cursor-ambient" aria-hidden="true" />
     </>
   );

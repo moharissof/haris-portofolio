@@ -114,11 +114,12 @@ footer { max-width: 1440px; padding: 28px 32px; margin: auto; display: flex; jus
 .motion-ready [data-reveal] { opacity: 0; transform: translate3d(0, 48px, 0) scale(.985); filter: blur(8px); transition: opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1), filter .9s ease; transition-delay: var(--delay, 0ms); }
 .motion-ready [data-reveal].is-visible { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
 .cursor-dot, .cursor-ring { position: fixed; left: 0; top: 0; z-index: 200; pointer-events: none; border-radius: 50%; will-change: transform; }
-.cursor-dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; background: var(--acid); box-shadow: 0 0 14px var(--acid); }
+.cursor-dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; background: var(--acid); box-shadow: 0 0 14px var(--acid); transition: opacity .18s; }
+.cursor-dot.is-hidden { opacity: 0; }
 .cursor-ring { width: 42px; height: 42px; margin: -21px 0 0 -21px; border: 1px solid rgba(201,255,61,.5); display: grid; place-items: center; transition: width .25s, height .25s, margin .25s, background .25s, border-color .25s; }
-.cursor-ring span { opacity: 0; color: #050505; font: 7px var(--font-geist-mono); letter-spacing: .08em; transition: opacity .2s; }
+.cursor-ring img { width: 56px; height: 56px; object-fit: contain; opacity: 0; transform: scale(.55) rotate(-5deg); transition: opacity .2s, transform .25s ease; filter: drop-shadow(0 7px 12px rgba(0,0,0,.28)); }
 .cursor-ring.is-active { width: 70px; height: 70px; margin: -35px 0 0 -35px; background: rgba(201,255,61,.82); border-color: var(--acid); backdrop-filter: blur(4px); mix-blend-mode: normal; }
-.cursor-ring.is-active span { opacity: 1; }
+.cursor-ring.is-active img { opacity: 1; transform: scale(1) rotate(0); }
 .cursor-ambient { position: fixed; width: 520px; height: 520px; left: var(--cursor-x, 50vw); top: var(--cursor-y, 50vh); transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(201,255,61,.035), transparent 66%); pointer-events: none; z-index: 1; will-change: left, top; }
 
 /* Deeper 3D hero world */
