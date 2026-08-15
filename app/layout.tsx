@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Haris Sofyan — Software & Cloud Engineer",
   description: "Portfolio of Haris Sofyan, a Software and Cloud Engineer building reliable, production-ready digital products.",
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  icons: { icon: "/logo.png", shortcut: "/logo.png", apple: "/logo.png" },
   openGraph: {
     title: "Haris Sofyan — Software & Cloud Engineer",
     description: "Reliable, production-ready software built with end-to-end ownership.",

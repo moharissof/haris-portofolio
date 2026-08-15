@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import { projects } from "./projects/data";
 
@@ -58,7 +59,7 @@ export default function Home() {
     <main className="home-page">
       <nav className="nav" aria-label="Main navigation">
         <a className="brand" href="#top" aria-label="Haris Sofyan home">
-          HS<span>.</span>
+          <Image className="brand-image" src="/logo.png" alt="" width={48} height={48} priority />
         </a>
         <div className="nav-links">
           <a href="#work">Work</a>

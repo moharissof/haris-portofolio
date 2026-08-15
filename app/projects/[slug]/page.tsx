@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "../data";
@@ -27,7 +28,9 @@ export default async function ProjectPage({ params }: PageProps) {
   return (
     <main className="case-page">
       <nav className="nav case-nav" aria-label="Project navigation">
-        <Link className="brand" href="/">HS<span>.</span></Link>
+        <Link className="brand" href="/" aria-label="Haris Sofyan home">
+          <Image className="brand-image" src="/logo.png" alt="" width={48} height={48} priority />
+        </Link>
         <Link className="back-link" href="/#work"><span>←</span> All projects</Link>
         <a className="nav-cta" href="mailto:haristiani243@gmail.com">Let&apos;s talk <span>↗</span></a>
       </nav>

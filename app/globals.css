@@ -7,8 +7,9 @@ a { color: inherit; text-decoration: none; }
 main { overflow: hidden; }
 
 .nav { width: min(1440px, calc(100% - 64px)); height: 88px; margin: auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); position: relative; z-index: 20; }
-.brand { font-size: 25px; font-weight: 750; letter-spacing: -.08em; }
-.brand span { color: var(--acid); }
+.brand { width: 48px; height: 48px; flex: 0 0 48px; display: block; transition: transform .25s ease, filter .25s ease; }
+.brand:hover { transform: translateY(-2px) scale(1.04); filter: drop-shadow(0 8px 16px rgba(201,255,61,.18)); }
+.brand-image { width: 100%; height: 100%; display: block; object-fit: contain; }
 .nav-links { display: flex; gap: 34px; font-size: 13px; color: #b8b8b1; }
 .nav-links a, .nav-cta { transition: color .25s ease; }
 .nav-links a:hover { color: white; }
