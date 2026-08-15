@@ -12,6 +12,7 @@ export type Project = {
   outcome: string;
   tags: string[];
   capabilities: string[];
+  deliverables?: { organization: string; items: string[] }[];
 };
 
 export const projects: Project[] = [
@@ -41,9 +42,15 @@ export const projects: Project[] = [
     description: "Academic and institutional digital systems for POLIWANGI, UNIBA, MAN 1 Banyuwangi, and STIKOM PGRI Banyuwangi.",
     overview: "A combined portfolio of institutional websites and academic products supporting public information, employee performance, student monitoring, and academic administration.",
     challenge: "Each institution and system served a different audience while still requiring dependable data handling, clear workflows, accessible information, and long-term maintainability.",
-    outcome: "Contributed engineering work across institutional websites, E-Kinerja, EduMonitor, and SIAKAD while bringing practical database and software knowledge into classroom sessions as an assistant lecturer.",
+    outcome: "Delivered eight academic and institutional systems across STIKOM PGRI Banyuwangi, POLIWANGI, UNIBA, and MAN 1 Banyuwangi, covering public services, academic operations, performance, laboratories, libraries, internships, and prior-learning recognition.",
     tags: ["Full-stack", "Databases", "Education"],
     capabilities: ["Institutional websites", "Full-stack development", "Academic workflows", "Performance monitoring", "Student information", "Relational databases"],
+    deliverables: [
+      { organization: "STIKOM PGRI Banyuwangi", items: ["Official company profile website", "SIAKAD", "PKL and internship student monitoring", "Lecturer and employee E-Kinerja"] },
+      { organization: "POLIWANGI", items: ["Integrated Service Unit", "E-Lab and library system"] },
+      { organization: "UNIBA", items: ["Recognition of Prior Learning system"] },
+      { organization: "MAN 1 Banyuwangi · Mansawangi", items: ["Library guestbook attendance with scanning"] },
+    ],
   },
   {
     slug: "tax-collection-integration",
@@ -164,6 +171,66 @@ export const projects: Project[] = [
     outcome: "Delivered management for hero content, menus, galleries, team members, testimonials, news, and messages, with JWT authentication, HTTP-only cookies, media uploads, API routes, and PostgreSQL persistence.",
     tags: ["Next.js 15", "Prisma", "Supabase"],
     capabilities: ["Responsive hospitality website", "Custom content management", "JWT and HTTP-only cookie auth", "Cloudinary media uploads", "Next.js App Router APIs", "PostgreSQL database"],
+  },
+  {
+    slug: "ai-question-generator",
+    number: "11",
+    title: "AI Question Generator",
+    shortTitle: "AI Question Generator",
+    client: "Educational assessment automation",
+    year: "2026 Edition",
+    role: "Python & AI Engineer",
+    description: "A Python-based AI tool that accelerates the creation of question sets for learning and assessment workflows.",
+    overview: "An educator-focused system for producing draft assessment questions efficiently while keeping review and final selection in human hands.",
+    challenge: "Preparing varied assessment material manually takes significant time, while every generated question still needs to remain relevant, understandable, and ready for educator review.",
+    outcome: "Built an AI-assisted question-generation workflow in Python that reduces preparation time and provides a practical starting point for reviewed educational assessments.",
+    tags: ["Python", "Artificial intelligence", "Education"],
+    capabilities: ["Python development", "AI-assisted question generation", "Assessment workflow automation", "Structured question output", "Human review workflow", "Education technology"],
+  },
+  {
+    slug: "lecca-pos",
+    number: "12",
+    title: "Lecca POS",
+    shortTitle: "Lecca POS",
+    client: "Point-of-sale operations",
+    year: "2026 Edition",
+    role: "Software Engineer",
+    description: "A point-of-sale application designed to make daily product, sales, and transaction operations easier to manage.",
+    overview: "A focused operational system that brings essential cashier activity and business transaction records into one clear experience.",
+    challenge: "Daily sales operations need a fast, understandable workflow while keeping products and transaction information organized for business users.",
+    outcome: "Created a practical POS experience that supports efficient cashier operations and clearer day-to-day sales management.",
+    tags: ["Point of sale", "Transactions", "Business operations"],
+    capabilities: ["Cashier workflow", "Product management", "Sales transactions", "Operational records", "Business-focused interface", "Software delivery"],
+  },
+  {
+    slug: "automatic-answer-detection",
+    number: "13",
+    title: "Automatic Answer Detection",
+    shortTitle: "Answer Detection",
+    client: "Educational answer processing",
+    year: "2026 Edition",
+    role: "AI & Software Engineer",
+    description: "An automated answer-detection solution that helps process responses more efficiently for educational assessment workflows.",
+    overview: "A software and automation project focused on recognizing submitted answers and reducing repetitive manual checking during assessment processing.",
+    challenge: "Manual answer checking can become slow and inconsistent at scale, creating a need for a repeatable detection process with results that remain reviewable.",
+    outcome: "Developed an automated detection workflow that speeds up answer processing while keeping the resulting information available for verification.",
+    tags: ["Automation", "Answer recognition", "Education"],
+    capabilities: ["Automated answer detection", "Response processing", "Assessment workflow", "Result verification", "Education technology", "Software integration"],
+  },
+  {
+    slug: "seko-apps-lms",
+    number: "14",
+    title: "Seko Apps LMS",
+    shortTitle: "Seko Apps",
+    client: "Whole-school learning ecosystem",
+    year: "2026 Edition",
+    role: "Full-Stack Software Engineer",
+    description: "A comprehensive learning management system designed around the operational and learning needs of an entire school.",
+    overview: "A school-wide LMS that connects learning activity with the broader academic workflows needed by students, teachers, administrators, and school management.",
+    challenge: "A complete school platform must serve different roles and workflows without making daily teaching, learning, administration, and monitoring feel fragmented.",
+    outcome: "Created a unified LMS foundation that supports whole-school needs through role-based access, organized learning workflows, academic activity, and centralized monitoring.",
+    tags: ["LMS", "Full-stack", "School operations"],
+    capabilities: ["School-wide learning management", "Role-based user workflows", "Learning content organization", "Academic activity support", "Centralized monitoring", "Full-stack development"],
   },
 ];
 

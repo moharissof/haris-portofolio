@@ -62,6 +62,24 @@ export default async function ProjectPage({ params }: PageProps) {
         </div>
       </section>
 
+      {project.deliverables?.length ? (
+        <section className="case-deliverables" data-reveal>
+          <div className="case-deliverables-heading">
+            <span className="section-index">DELIVERED SYSTEMS</span>
+            <h2>Outcomes by institution.</h2>
+          </div>
+          <div className="case-deliverables-grid">
+            {project.deliverables.map((group, groupIndex) => (
+              <article key={group.organization}>
+                <span>{String(groupIndex + 1).padStart(2, "0")}</span>
+                <h3>{group.organization}</h3>
+                <ol>{group.items.map((item) => <li key={item}>{item}</li>)}</ol>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="case-capabilities" data-reveal>
         <div><span className="section-index">CAPABILITIES</span><h2>What the work involved.</h2></div>
         <ol>{project.capabilities.map((capability, index) => <li key={capability}><span>{String(index + 1).padStart(2, "0")}</span>{capability}</li>)}</ol>
