@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { MotionEffects } from "./components/MotionEffects";
+import { IntroExperience } from "./components/IntroExperience";
 
 const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body><MotionEffects />{children}</body>
+      <body><IntroExperience /><MotionEffects />{children}</body>
     </html>
   );
 }
