@@ -66,6 +66,7 @@ export default function Home() {
           <a href="#portfolio">Portfolio</a>
           <a href="#experience">Experience</a>
           <a href="#about">About</a>
+          <a href="/blog">Notes</a>
         </div>
         <a className="nav-cta" href="mailto:haristiani243@gmail.com">
           Let&apos;s talk <span aria-hidden="true">↗</span>
